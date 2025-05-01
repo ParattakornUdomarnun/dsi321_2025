@@ -17,6 +17,10 @@ def fetch_firms() :
 
     try :
         df_thai = pd.read_csv(thai_url)
+        # Ensure "acq_time" is a string, then pad with zeros
+        df_thai["acq_time"] = df_thai["acq_time"].astype(str).str.zfill(4)
+        # Convert to HH:MM format
+        df_thai["acq_time"] = pd.to_datetime(df_thai["acq_time"], format="%H%M").dt.time
         df_thai['acq_datetime'] = pd.to_datetime(df_thai['acq_date'].astype(str) + ' ' + df_thai['acq_time'].astype(str), format='%Y-%m-%d %H:%M:%S')
         df_thai['acq_datetime_th'] = df_thai['acq_datetime'].dt.tz_localize('GMT').dt.tz_convert('Asia/Bangkok')
         df_thai["acq_year"] = pd.to_datetime(df_thai["acq_datetime_th"]).dt.year
