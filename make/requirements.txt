@@ -1,4 +1,5 @@
 pandas==2.2.3
+numpy==2.2.3
 pyarrow==19.0.0
 requests==2.32.3
 kedro==0.19.11
@@ -10,3 +11,5 @@ s3fs==2025.3.2
 pytz==2025.2
 streamlit==1.44.1
 geopandas==1.0.1
+scikit-learn==1.6.1
+contextily==1.6.2
