@@ -65,7 +65,9 @@ def fetch_weather_data(lat,lon):
             "timezone": data.get("timezone"),
             "id": data.get("id"),
             "name": data.get("name"),
-            "cod": data.get("cod")
+            "cod": data.get("cod"),
+            "timestamp": bangkok_time.strftime("%Y-%m-%d %H:%M:%S"),
+
         }
 
         return weather_data
