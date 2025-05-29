@@ -30,7 +30,9 @@ def fetch_firms() :
         df_thai["acq_minute"] = pd.to_datetime(df_thai["acq_datetime_th"]).dt.minute
         df_thai["timestamp"] = df_thai["acq_datetime_th"].dt.strftime("%Y-%m-%d %H:%M:%S")
 
-
+        for col in df_thai.columns:
+            if df_thai[col].dtype == 'object':
+                df_thai[col] = df_thai[col].astype('string')
         return df_thai
 
 

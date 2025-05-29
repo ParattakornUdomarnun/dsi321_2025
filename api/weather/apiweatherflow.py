@@ -166,6 +166,10 @@ def apiweather_flow() :
         new_data = fetch_weather_data(i["lat"],i["lon"])
         df = pd.concat([df, pd.DataFrame([new_data])], ignore_index=True)
 
+    for col in df.columns:
+        if df[col].dtype == 'object':
+            df[col] = df[col].astype('string')
+
     # lakeFS credentials from your docker-compose.yml
     ACCESS_KEY = "access_key"
     SECRET_KEY = "secret_key"
